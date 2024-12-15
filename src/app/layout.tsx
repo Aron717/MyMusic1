@@ -1,6 +1,7 @@
-import NavBar from "./Components/NavBar";
+import NavBar from "./components/NavBar";
 import "./globals.css";
-import { ThemeProvider } from "./Components/ThemeProvider";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { Toaster } from "@/components/provider";
 
 
 export default function RootLayout({
@@ -12,6 +13,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <Toaster 
+        position="bottom-center"
+        visibleToasts={2}
+        expand
+        richColors
+        />
         <NavBar />
         <main>{children}</main>
         </ThemeProvider>

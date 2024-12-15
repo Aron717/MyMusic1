@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
@@ -18,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { toast } from "sonner"
 
 export function CardWithForm() {
   return (
@@ -52,7 +54,14 @@ export function CardWithForm() {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+        <Button onClick={() => {
+          toast.promise(async()=> {
+          return new Promise ((resolve)=> {
+            setTimeout(()=>{
+              resolve("Project deployed!")
+            }, 2000)
+          })
+        },{loading: "Deploying...", success: "Project deployed!", error: "Failed to deployed"})}}>Deploy</Button>
       </CardFooter>
     </Card>
   )
